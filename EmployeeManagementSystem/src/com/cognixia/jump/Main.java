@@ -213,8 +213,8 @@ while(true) {
 		
 		Scanner input = new Scanner(System.in);
 		System.out.println("\nEnter the following details to ADD list:\n");
-		System.out.println("Enter ID :");
-		id = sc.nextInt();
+		//System.out.println("Enter ID :");
+		//id = sc.nextInt();
 		System.out.print("\nEnter the name: ");
 		String name = input.next();
 		System.out.print("\nEnter the department: ");
@@ -224,11 +224,13 @@ while(true) {
         System.out.print("\nEnter the email: ");
 		String email = input.next();
 		
+        manager.createEmployee(new Employee (0, name,department, salary, email));
+        System.out.print("Employee was created successfully");
         
-		Employee.add(new Employee(id, name, department, salary, email));
+		//Employee.add(new Employee(id, name, department, salary, email));
 		
-		EmployeeManagerInMemory m = new EmployeeManagerInMemory();
-		m.createEmployee(null);
+		//EmployeeManagerInMemory m = new EmployeeManagerInMemory();
+		//m.createEmployee(null);
 		
 	   // System.out.println("Employee " + name + " " +department + " Created succesfully");
 		// TODO Auto-generated method stub
@@ -239,10 +241,11 @@ public static void updateEmployee() {
 		
 
 	
+	
 				System.out.println("\nEnter the Employee ID to EDIT the details");
 				id = sc.nextInt();
 				int j=0;
-				for(Employee e : employeeList)
+				for(Employee e : manager.getAllEmployees())
 				{
 					if(id == e.id)
 					{	
@@ -301,7 +304,7 @@ public static void updateEmployee() {
 					System.out.println("\nEmployee Details are not available, Please enter a valid ID!!");
 				}
 			
-				break;
+			//	break;
 				
 				
 				

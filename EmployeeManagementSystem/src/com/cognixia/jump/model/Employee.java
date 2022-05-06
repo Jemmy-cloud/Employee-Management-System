@@ -66,9 +66,9 @@ public class Employee {
 	}
 
 
-	public static void add(Employee employee) {
+	//public static void add(Employee employee) {
 		// TODO Auto-generated method stub
 		
-	}
+	//}
 
 }

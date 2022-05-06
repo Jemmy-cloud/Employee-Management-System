@@ -39,7 +39,7 @@ public class EmployeeManagerInMemory implements EmployeeManager {
 	public boolean createEmployee(Employee empl) {
 		
 		// reset id to be unique using the counter
-		//empl.setId(idCounter++);
+		empl.setId(idCounter++);
 		
 		employeeList.add(empl);
 		
@@ -70,11 +70,15 @@ public class EmployeeManagerInMemory implements EmployeeManager {
 
 	@Override
 	public List<Employee> getEmployeesByDepartment(String dept) {
+		List<Employee> samedept = new ArrayList<Employee>();
+		
 		for(Employee e : employeeList) {
-			if(e.getDepartment() == dept) {
-				return List<Employee>;
+			if(e.getDepartment().equals(dept)) {
+				
+				samedept.add(e);
 			}
 		}
+		return samedept;
 		
 	}
 	
