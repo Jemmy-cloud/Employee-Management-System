@@ -8,9 +8,10 @@ import com.cognixia.jump.model.Employee;
 
 public class EmployeeManagerInMemory implements EmployeeManager {
 	
+
 	private static int idCounter = 1;
-	private static List<Employee> employeeList = new ArrayList<Employee>();
-	
+	public static List<Employee> employeeList = new ArrayList<Employee>();
+	//ArrayList<Employee> employeeList = new ArrayList<Employee>();
 	static {
 		employeeList.add(new Employee(idCounter++, "Tom", "HR", 50000, "tom@email.com"));
 		employeeList.add(new Employee(idCounter++, "Mary", "HR", 50000, "mary@email.com"));
@@ -38,7 +39,7 @@ public class EmployeeManagerInMemory implements EmployeeManager {
 	public boolean createEmployee(Employee empl) {
 		
 		// reset id to be unique using the counter
-		empl.setId(idCounter++);
+		//empl.setId(idCounter++);
 		
 		employeeList.add(empl);
 		
@@ -47,31 +48,54 @@ public class EmployeeManagerInMemory implements EmployeeManager {
 
 	@Override
 	public boolean deleteEmployee(int id) {
-		// TODO Auto-generated method stub
+		for(Employee e : employeeList) {
+			if(e.getId() == id) {
+				employeeList.remove(e);
+			}
+		}
 		return false;
 	}
 
 	@Override
 	public boolean updateEmployee(Employee empl) {
-		// TODO Auto-generated method stub
+		int j=0;
+		for(Employee e : employeeList) {
+			if(e.getName() == toString()) {
+				j++;
+			}
+			
+			}
 		return false;
 	}
 
 	@Override
 	public List<Employee> getEmployeesByDepartment(String dept) {
-		// TODO Auto-generated method stub
-		return null;
+		for(Employee e : employeeList) {
+			if(e.getDepartment() == dept) {
+				return List<Employee>;
+			}
+		}
+		
 	}
 	
 	@Override
 	public List<Employee> updateEmployeesByDepartment(String dept) {
-		// TODO Auto-generated method stub
+		int j=0;
+		for(Employee e : employeeList) {
+			if(e.getDepartment() == dept) {
+				j++;
+			}
+		}
 		return null;
 	}
 	
 	@Override
 	public List<Employee> deleteEmployeesByDepartment(String dept) {
-		// TODO Auto-generated method stub
+		for(Employee e : employeeList) {
+			if(e.getDepartment() == dept) {
+				employeeList.remove(e);
+			}
+		}
 		return null;
 	}
 

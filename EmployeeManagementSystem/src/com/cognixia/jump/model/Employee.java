@@ -2,11 +2,11 @@ package com.cognixia.jump.model;
 
 public class Employee {
 
-	private int id;
-	private String name;
-	private String department;
-	private int salary;
-	private String email;
+	public int id;
+	public String name;
+	public String department;
+	public int salary;
+	public String email;
 
 	public Employee(int id, String name, String department, int salary, String email) {
 		super();
@@ -16,6 +16,8 @@ public class Employee {
 		this.salary = salary;
 		this.email = email;
 	}
+
+
 
 	public int getId() {
 		return id;
@@ -61,6 +63,12 @@ public class Employee {
 	public String toString() {
 		return "Employee [id=" + id + ", name=" + name + ", department=" + department + ", salary=" + salary
 				+ ", email=" + email + "]";
+	}
+
+
+	public static void add(Employee employee) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

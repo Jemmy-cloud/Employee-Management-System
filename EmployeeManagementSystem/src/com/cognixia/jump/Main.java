@@ -32,12 +32,13 @@ import com.cognixia.jump.util.EmployeeManagerInMemory;
 public class Main {
 
 	private static EmployeeManager manager;
-	private static Scanner sc;
-	private static  Scanner comp;
-	private static Scanner fn;
-	private static Scanner ln;
-	private static Scanner wage;
-	private static Scanner hours;
+	public static Scanner sc;
+	public static int id;
+	public String name;
+	public String department;
+	public int salary;
+	public String email;
+
 
 	public static void main(String[] args) {
 
@@ -65,7 +66,8 @@ public class Main {
 									+ "\n4.) Update Employee"
 									+ "\n5.) Delete Employee" 
 									+ "\n6.) Exit");
-
+				
+				System.out.println("Enter your choice : ");
 				int option = sc.nextInt();
 				sc.nextLine(); // getting rid of new line character
 
@@ -74,11 +76,13 @@ public class Main {
 					viewEmployees();
 					break;
 				case 2:
-					createEmployee();
+					
 					break;
 				case 3:
+					createEmployee();
 					break;
 				case 4:
+					updateEmployee();
 					break;
 				case 5:
 					break;
@@ -185,12 +189,14 @@ while(true) {
 					break;
 				case 3:
 					break;
+				case 4:
+					break;
 				default:
 					System.out.println("Enter number between 1 and 3");
 					break;
 				}
 				
-				if(option == 3) {
+				if(option == 4) {
 					break;
 				}
 				
@@ -202,24 +208,107 @@ while(true) {
 			}
 	}
 
-	private static void createHourlyEmployee() {
+	public static void createHourlyEmployee() {
+		
 		
 		Scanner input = new Scanner(System.in);
-		System.out.print("\nEnter the company: ");
-		String comp = input.next();
-        System.out.print("\nEnter the first name: ");
-		String fn = input.next();
-        System.out.print("\nEnter the last name: ");
-		String ln = input.next();
-        System.out.print("\nEnter the hourly wage: ");
-		String wage = input.next();
-        System.out.print("\nEnter the hours worked: ");
-		String hours = input.next();
+		System.out.println("\nEnter the following details to ADD list:\n");
+		System.out.println("Enter ID :");
+		id = sc.nextInt();
+		System.out.print("\nEnter the name: ");
+		String name = input.next();
+		System.out.print("\nEnter the department: ");
+		String department = input.next();
+		System.out.print("\nEnter the salary: ");
+		int salary = sc.nextInt();
+        System.out.print("\nEnter the email: ");
+		String email = input.next();
 		
-	    System.out.println("Employee " + fn + " " +ln + " Created succesfully");
+        
+		Employee.add(new Employee(id, name, department, salary, email));
+		
+		EmployeeManagerInMemory m = new EmployeeManagerInMemory();
+		m.createEmployee(null);
+		
+	   // System.out.println("Employee " + name + " " +department + " Created succesfully");
 		// TODO Auto-generated method stub
 		
 	}
 
-}
+public static void updateEmployee() {
+		
+
+	
+				System.out.println("\nEnter the Employee ID to EDIT the details");
+				id = sc.nextInt();
+				int j=0;
+				for(Employee e : employeeList)
+				{
+					if(id == e.id)
+					{	
+						j++;
+					do{
+						int ch1 =0;
+						System.out.println("\nEDIT Employee Details :\n" +
+											"1). Employee ID\n" +
+											"2). Name\n" +
+											"3). Salary\n" +
+											"4). department\n" +
+											"5). email\n" +
+											"6). GO BACK\n");
+						System.out.println("Enter your choice : ");
+						ch1 = sc.nextInt();
+						switch(ch1)
+						{
+						case 1: System.out.println("\nEnter new Employee ID:");
+								e.id =sc.nextInt();
+								System.out.println(e+"\n");
+								break;
+						
+						case 2: System.out.println("Enter new Employee Name:");
+								e.name =sc.nextLine();
+								System.out.println(e+"\n");
+								break;
+								
+						case 3: System.out.println("Enter new Employee Salary:");
+								e.salary =sc.nextInt();
+								System.out.println(e+"\n");
+								break;
+								
+						case 4: System.out.println("Enter new Employee department :");
+								e.department =sc.next();
+								System.out.println(e+"\n");
+								break;
+								
+						case 5: System.out.println("Enter new Employee Email :");
+								e.email =sc.next();
+								System.out.println(e+"\n");
+								break;
+								
+						case 6: j++;
+								break;
+								
+						default : System.out.println("\nEnter a correct choice from the List :");
+									break;
+						
+						}
+						}
+					while(j==1);
+					}
+				}
+				if(j == 0)
+				{
+					System.out.println("\nEmployee Details are not available, Please enter a valid ID!!");
+				}
+			
+				break;
+				
+				
+				
+				
+				
+	
+}}
+
+
 
